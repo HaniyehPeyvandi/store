@@ -4,7 +4,7 @@ import Product from "./Product/Product";
 
 const ProductList = () => {
   return (
-    <Container style={{ backgroundColor: "red" }}>
+    <Container style={{ backgroundColor: "red" }} sx={{mt:3}}>
       <Grid container spacing={3}>
         <Product/>
         <Product/>
