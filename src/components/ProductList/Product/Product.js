@@ -7,10 +7,21 @@ import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import styles from "./Product.module.css";
 
-const Product = () => {
+const Product = ({ product }) => {
+  const { title, price, image, rating } = product;
+
   return (
     <Grid item xs={12} sm={3}>
-      <Paper elevation={2} sx={{ p: 2 }}>
+      <Paper
+        elevation={2}
+        sx={{
+          p: 2,
+          height: 470,
+          display: "flex",
+          flexDirection: "column",
+          
+        }}
+      >
         <Box
           sx={{
             display: "flex",
@@ -18,27 +29,29 @@ const Product = () => {
             alignItems: "center",
           }}
         >
-          <img
-            src="https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg"
-            alt=""
-            className={styles.img}
-          />
+          <img src={image} alt={title} className={styles.img} />
         </Box>
-        <Box sx={{ display: "flex", justifyContent: "space-between", mt: 1 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            mt: 1,
+          }}
+        >
           <Box>
             <Typography variant="subtitle1" component="h2">
-              product title
+              {title}
             </Typography>
             <Rating
               name="read-only"
-              value={3}
+              value={rating.rate}
               precision={0.1}
               size="small"
               readOnly
               sx={{ py: 1 }}
             />
             <Typography variant="subtitle2" component="p">
-              $ 100
+              $ {price}
             </Typography>
           </Box>
           <Box sx={{ alignSelf: "flex-end" }}>
