@@ -23,7 +23,7 @@ const Navbar = () => {
             </Typography>
 
             <IconButton onClick={() => setOpen(true)}>
-              <Badge badgeContent={1} color="error">
+              <Badge badgeContent={2} color="error">
                 <ShoppingBagOutlinedIcon />
               </Badge>
             </IconButton>
