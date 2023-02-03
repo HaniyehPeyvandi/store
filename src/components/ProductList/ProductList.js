@@ -5,6 +5,8 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
 import Product from "./Product/Product";
 
 const ProductList = () => {
@@ -27,11 +29,16 @@ const ProductList = () => {
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return (
+      <Alert severity="error" sx={{ mt: 3, mx: "auto", width: "40%" }}>
+        <AlertTitle>Error</AlertTitle>
+        {error}
+      </Alert>
+    );
   }
 
   return (
-    <Container style={{ backgroundColor: "red" }} sx={{ mt: 3 }}>
+    <Container sx={{ mt: 3 }}>
       <Grid container spacing={3}>
         {items.map((item) => (
           <Product key={item.id} item={item} />
