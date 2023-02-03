@@ -4,8 +4,11 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import CartItem from "./CartItem/CartItem";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
+  const { items } = useSelector((state) => state.cart);
+
   return (
     <Box
       sx={{ width: 310, height: "100%", position: "relative" }}
@@ -18,8 +21,18 @@ const Cart = () => {
         </Typography>
       </Box>
       <Divider />
-      <CartItem/>
-      <Box
+      {items.length ? (
+        items.map((item) => <CartItem key={item.id} item={item} />)
+      ) : (
+        <Typography
+          variant="subtitle1"
+          component="p"
+          sx={{ textAlign: "center", mt: 2 }}
+        >
+          Your cart is empty
+        </Typography>
+      )}
+      {/* <Box
         sx={{
           position: "absolute",
           bottom: 0,
@@ -40,7 +53,7 @@ const Cart = () => {
         >
           View Cart
         </Button>
-      </Box>
+      </Box> */}
     </Box>
   );
 };
