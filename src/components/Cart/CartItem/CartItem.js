@@ -49,7 +49,16 @@ const CartItem = ({ item }) => {
             <img src={image} alt={title} style={{ width: "60px" }} />
           </Box>
           <Box sx={{ mx: 1 }}>
-            <Typography variant="subtitle2" component="p">
+            <Typography
+              variant="subtitle2"
+              component="p"
+              sx={{
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                width: "80px"
+              }}
+            >
               {title}
             </Typography>
             <Typography variant="caption" component="p" sx={{ lineHeight: 1 }}>

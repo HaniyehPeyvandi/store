@@ -6,6 +6,7 @@ import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
+import Tooltip from "@mui/material/Tooltip";
 import styles from "./Product.module.css";
 import { addToCart } from "../../../features/cart/cartSlice";
 
@@ -14,14 +15,11 @@ const Product = ({ item }) => {
   const dispatch = useDispatch();
 
   return (
-    <Grid item xs={12} sm={3}>
+    <Grid item xs={12} sm={6} md={3}>
       <Paper
         elevation={2}
         sx={{
           p: 2,
-          height: 470,
-          display: "flex",
-          flexDirection: "column",
         }}
       >
         <Box
@@ -37,13 +35,24 @@ const Product = ({ item }) => {
           sx={{
             display: "flex",
             justifyContent: "space-between",
-            mt: 1,
+            mt: 5,
           }}
         >
           <Box>
-            <Typography variant="subtitle1" component="h2">
-              {title}
-            </Typography>
+            <Tooltip title={title} placement="top-start">
+              <Typography
+                variant="subtitle1"
+                component="h2"
+                sx={{
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  width: "145px",
+                }}
+              >
+                {title}
+              </Typography>
+            </Tooltip>
             <Rating
               name="read-only"
               value={rating.rate}
