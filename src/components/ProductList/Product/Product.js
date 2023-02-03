@@ -1,3 +1,4 @@
+import { useDispatch } from "react-redux";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
@@ -6,9 +7,11 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import styles from "./Product.module.css";
+import { addToCart } from "../../../features/cart/cartSlice";
 
-const Product = ({ product }) => {
-  const { title, price, image, rating } = product;
+const Product = ({ item }) => {
+  const { title, price, image, rating } = item;
+  const dispatch = useDispatch();
 
   return (
     <Grid item xs={12} sm={3}>
@@ -19,7 +22,6 @@ const Product = ({ product }) => {
           height: 470,
           display: "flex",
           flexDirection: "column",
-          
         }}
       >
         <Box
@@ -55,7 +57,11 @@ const Product = ({ product }) => {
             </Typography>
           </Box>
           <Box sx={{ alignSelf: "flex-end" }}>
-            <Button variant="outlined" sx={{ minWidth: 0, p: 0 }}>
+            <Button
+              variant="outlined"
+              sx={{ minWidth: 0, p: 0 }}
+              onClick={() => dispatch(addToCart(item))}
+            >
               <AddIcon />
             </Button>
           </Box>
