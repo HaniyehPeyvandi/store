@@ -15,31 +15,37 @@ const Cart = () => {
 
   return (
     <Box
-      sx={{ width: 310, height: "100%", position: "relative" }}
+      sx={{
+        width: 310,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        minHeight: "100vh",
+      }}
       role="presentation"
     >
-      <Box sx={{ display: "flex", alignItems: "center", p: 2 }}>
-        <ShoppingBagOutlinedIcon sx={{ mr: 1 }} />
-        <Typography variant="subtitle2" component="p">
-          {totalCount} items
-        </Typography>
+      <Box>
+        <Box sx={{ display: "flex", alignItems: "center", p: 2 }}>
+          <ShoppingBagOutlinedIcon sx={{ mr: 1 }} />
+          <Typography variant="subtitle2" component="p">
+            {totalCount} items
+          </Typography>
+        </Box>
+        <Divider />
+        {items.length ? (
+          items.map((item) => <CartItem key={item.id} item={item} />)
+        ) : (
+          <Typography
+            variant="subtitle1"
+            component="p"
+            sx={{ textAlign: "center", mt: 2 }}
+          >
+            Your cart is empty
+          </Typography>
+        )}
       </Box>
-      <Divider />
-      {items.length ? (
-        items.map((item) => <CartItem key={item.id} item={item} />)
-      ) : (
-        <Typography
-          variant="subtitle1"
-          component="p"
-          sx={{ textAlign: "center", mt: 2 }}
-        >
-          Your cart is empty
-        </Typography>
-      )}
       <Box
         sx={{
-          position: "absolute",
-          bottom: 0,
           px: 3,
           py: 2,
           width: "100%",
@@ -49,7 +55,7 @@ const Cart = () => {
           variant="contained"
           sx={{ width: "100%", mb: 1, textTransform: "capitalize" }}
         >
-          CheckOut Now $({totalPrice})
+          CheckOut Now $({Math.floor(totalPrice * 100) / 100})
         </Button>
         <Button
           variant="outlined"

@@ -56,7 +56,7 @@ const CartItem = ({ item }) => {
               ${price} &times; {quantity}
             </Typography>
             <Typography variant="subtitle2" component="p" sx={{ mt: 0.75 }}>
-              ${price * quantity}
+              ${Math.floor(price * quantity * 100) / 100}
             </Typography>
           </Box>
         </Box>
