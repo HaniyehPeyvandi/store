@@ -7,7 +7,11 @@ import CartItem from "./CartItem/CartItem";
 import { useSelector } from "react-redux";
 
 const Cart = () => {
-  const { items,totalCount } = useSelector((state) => state.cart);
+  const { items, totalCount } = useSelector((state) => state.cart);
+
+  const totalPrice = items.length
+    ? items.reduce((total, item) => (total += item.price * item.quantity), 0)
+    : 0;
 
   return (
     <Box
@@ -32,7 +36,7 @@ const Cart = () => {
           Your cart is empty
         </Typography>
       )}
-      {/* <Box
+      <Box
         sx={{
           position: "absolute",
           bottom: 0,
@@ -45,7 +49,7 @@ const Cart = () => {
           variant="contained"
           sx={{ width: "100%", mb: 1, textTransform: "capitalize" }}
         >
-          CheckOut Now $(475)
+          CheckOut Now $({totalPrice})
         </Button>
         <Button
           variant="outlined"
@@ -53,7 +57,7 @@ const Cart = () => {
         >
           View Cart
         </Button>
-      </Box> */}
+      </Box>
     </Box>
   );
 };
