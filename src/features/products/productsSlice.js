@@ -5,10 +5,10 @@ export const getProducts = createAsyncThunk(
   "products/getProducts",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get("https://fakestoreapi.com/products");
+      const response = await axios.get("https://fakestoreapiii.com/products");
       return response.data;
     } catch (error) {
-      return rejectWithValue([], error);
+      return rejectWithValue(error);
     }
   }
 );
@@ -39,7 +39,7 @@ const productsSlice = createSlice({
         ...state,
         items: [],
         loading: false,
-        error: action.error.message,
+        error: action.payload.message,
       };
     });
   },
