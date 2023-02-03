@@ -9,9 +9,11 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import Container from "@mui/material/Container";
 import Drawer from "@mui/material/Drawer";
 import Cart from "../Cart/Cart";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const { totalCount } = useSelector((state) => state.cart);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -23,7 +25,7 @@ const Navbar = () => {
             </Typography>
 
             <IconButton onClick={() => setOpen(true)}>
-              <Badge badgeContent={2} color="error">
+              <Badge badgeContent={totalCount} color="error" showZero>
                 <ShoppingBagOutlinedIcon />
               </Badge>
             </IconButton>

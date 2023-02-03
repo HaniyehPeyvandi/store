@@ -7,7 +7,7 @@ import CartItem from "./CartItem/CartItem";
 import { useSelector } from "react-redux";
 
 const Cart = () => {
-  const { items } = useSelector((state) => state.cart);
+  const { items,totalCount } = useSelector((state) => state.cart);
 
   return (
     <Box
@@ -17,7 +17,7 @@ const Cart = () => {
       <Box sx={{ display: "flex", alignItems: "center", p: 2 }}>
         <ShoppingBagOutlinedIcon sx={{ mr: 1 }} />
         <Typography variant="subtitle2" component="p">
-          2 items
+          {totalCount} items
         </Typography>
       </Box>
       <Divider />
