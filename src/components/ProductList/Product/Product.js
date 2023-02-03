@@ -9,10 +9,19 @@ import AddIcon from "@mui/icons-material/Add";
 import Tooltip from "@mui/material/Tooltip";
 import styles from "./Product.module.css";
 import { addToCart } from "../../../features/cart/cartSlice";
+import { toast } from 'react-toastify';
 
 const Product = ({ item }) => {
   const { title, price, image, rating } = item;
   const dispatch = useDispatch();
+
+  const addToCartHandler = (item) => {
+    dispatch(addToCart(item));
+    toast.success("Added to cart", {
+      autoClose: 3000,
+      theme: "light",
+    });
+  }
 
   return (
     <Grid item xs={12} sm={6} md={3}>
@@ -69,7 +78,7 @@ const Product = ({ item }) => {
             <Button
               variant="outlined"
               sx={{ minWidth: 0, p: 0 }}
-              onClick={() => dispatch(addToCart(item))}
+              onClick={() => addToCartHandler(item)}
             >
               <AddIcon />
             </Button>
