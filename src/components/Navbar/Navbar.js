@@ -26,7 +26,7 @@ const Navbar = () => {
 
             <IconButton onClick={() => setOpen(true)}>
               <Badge badgeContent={totalCount} color="error" showZero>
-                <ShoppingBagOutlinedIcon />
+                <ShoppingBagOutlinedIcon sx={{color:"#fff"}} />
               </Badge>
             </IconButton>
             <Drawer open={open} anchor={"right"} onClose={() => setOpen(false)}>
