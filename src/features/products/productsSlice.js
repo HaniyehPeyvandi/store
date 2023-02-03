@@ -14,7 +14,7 @@ export const getProducts = createAsyncThunk(
 );
 
 const initialState = {
-  products: [],
+  items: [],
   error: null,
   loading: false,
 };
@@ -24,12 +24,12 @@ const productsSlice = createSlice({
   initialState: initialState,
   extraReducers: (builder) => {
     builder.addCase(getProducts.pending, (state, action) => {
-      return { ...state, products: [], loading: true, error: null };
+      return { ...state, items: [], loading: true, error: null };
     });
     builder.addCase(getProducts.fulfilled, (state, action) => {
       return {
         ...state,
-        products: action.payload,
+        items: action.payload,
         loading: false,
         error: null,
       };
@@ -37,7 +37,7 @@ const productsSlice = createSlice({
     builder.addCase(getProducts.rejected, (state, action) => {
       return {
         ...state,
-        products: [],
+        items: [],
         loading: false,
         error: action.error.message,
       };
