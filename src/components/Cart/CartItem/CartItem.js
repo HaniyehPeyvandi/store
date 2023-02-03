@@ -56,7 +56,7 @@ const CartItem = ({ item }) => {
                 textOverflow: "ellipsis",
                 whiteSpace: "nowrap",
                 overflow: "hidden",
-                width: "80px"
+                width: "80px",
               }}
             >
               {title}

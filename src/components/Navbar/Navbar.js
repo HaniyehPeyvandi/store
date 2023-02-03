@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -9,7 +10,6 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import Container from "@mui/material/Container";
 import Drawer from "@mui/material/Drawer";
 import Cart from "../Cart/Cart";
-import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -26,7 +26,7 @@ const Navbar = () => {
 
             <IconButton onClick={() => setOpen(true)}>
               <Badge badgeContent={totalCount} color="error" showZero>
-                <ShoppingBagOutlinedIcon sx={{color:"#fff"}} />
+                <ShoppingBagOutlinedIcon sx={{ color: "#fff" }} />
               </Badge>
             </IconButton>
             <Drawer open={open} anchor={"right"} onClose={() => setOpen(false)}>

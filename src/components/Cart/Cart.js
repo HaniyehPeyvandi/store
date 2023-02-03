@@ -1,10 +1,10 @@
+import { useSelector } from "react-redux";
 import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import CartItem from "./CartItem/CartItem";
-import { useSelector } from "react-redux";
 
 const Cart = () => {
   const { items, totalCount } = useSelector((state) => state.cart);
